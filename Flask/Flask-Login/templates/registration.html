@@ -1,0 +1,44 @@
+{% extends 'bootstrap/base.html' %}
+{% block navbar %}
+<nav class="navbar navbar-default" style="background-color: #c74343;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">MobilMed</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+{% block content %}
+  <form method="post">
+      {{form.hidden_tag()}}
+      {{form.name.label}}{{form.name()}} <br>
+      {{form.specialisation.label}}{{form.specialisation()}} <br>
+      {{form.email.label}}{{form.email()}} <br>
+      {{form.password.label}}{{form.password()}} <br>
+      {{form.confirm.label}}{{form.confirm()}} <br>
+      <p> This is contract</p>
+      {{form.accept_tos.label}}{{form.accept_tos()}} <br>
+      {{form.submit()}}
+  </form>
+    
+    {% if form.check_email(form.email) %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                 Your email used
+            </div>
+    {% elif form.password.data != form.confirm.data %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Password must match
+
+            </div>
+    {% endif %}
+    
+           
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'bootstrap/base.html' %}
+{% block navbar %}
+<nav class="navbar navbar-default" style="background-color: #c74343;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">MobilMed</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+{% block content %}
+  {% if current_user.is_authenticated %}
+  <p>Hi {{current_user.email }}</p>
+  {% else %}
+  <p>Please login or register</p>
+  {% endif %}
+{% endblock %}
